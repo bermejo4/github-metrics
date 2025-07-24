@@ -1,9 +1,9 @@
 name: Metrics
 
 on:
-  schedule: [{cron: "0 * * * *"}]  # Se ejecuta cada hora
-  push: {branches: ["main"]}       # También cuando haces push
-  workflow_dispatch:               # Y manualmente si quieres
+  schedule: [{cron: "0 * * * *"}]  # Cada hora
+  push: {branches: ["main"]}       # Al hacer push
+  workflow_dispatch:               # Ejecutable manualmente
 
 jobs:
   github-metrics:
@@ -14,5 +14,6 @@ jobs:
         with:
           filename: github-metrics.svg
           token: ${{ secrets.METRICS_TOKEN }}
+          committer_token: ${{ secrets.METRICS_TOKEN }}
           base: header, activity, community, repositories
           config_timezone: Europe/Madrid
