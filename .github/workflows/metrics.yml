@@ -1,0 +1,18 @@
+name: Metrics
+
+on:
+  schedule: [{cron: "0 * * * *"}]  # Se ejecuta cada hora
+  push: {branches: ["main"]}       # También cuando haces push
+  workflow_dispatch:               # Y manualmente si quieres
+
+jobs:
+  github-metrics:
+    runs-on: ubuntu-latest
+    steps:
+      - name: GitHub Metrics
+        uses: lowlighter/metrics@latest
+        with:
+          filename: github-metrics.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          base: header, activity, community, repositories
+          config_timezone: Europe/Madrid
