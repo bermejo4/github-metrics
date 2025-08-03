@@ -1,7 +1,7 @@
 name: Metrics
 
 on:
-  schedule: [{cron: "0 * * * *"}]  # Cada hora
+  schedule: [{cron: "0 3 * * *"}]  # Una vez al día a las 03:00
   push: {branches: ["main"]}       # Al hacer push
   workflow_dispatch:               # Ejecutable manualmente
 
